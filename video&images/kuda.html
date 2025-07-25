@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pin Then Scroll Heading</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .before,
+    .after {
+      height: 100vh;
+      background-color: #e3e3e3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      position: relative;
+    }
+
+    .pinned-heading {
+      font-size: 2rem;
+      text-align: center;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .scroll-content {
+      height: 1500px;
+      padding: 20px;
+      background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="before">
+    <p>Before Content</p>
+  </div>
+
+  <div class="container">
+    <h1 class="pinned-heading">Pinned Heading</h1>
+    <div class="scroll-content">
+      <p>Scroll down through this content...</p>
+      <!-- You can add more text or repeat to increase height -->
+    </div>
+  </div>
+
+  <div class="after">
+    <p>After Content</p>
+  </div>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    ScrollTrigger.create({
+      trigger: ".scroll-content",
+      start: "top top",         // when .scroll-content hits top
+      end: "bottom top",        // when bottom of .scroll-content hits top
+      pin: ".pinned-heading",   // pin the heading
+      pinSpacing: false         // don't push content down
+    });
+  </script>
+
+</body>
+</html>
