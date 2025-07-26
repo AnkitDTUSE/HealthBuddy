@@ -193,9 +193,6 @@ document.querySelectorAll(".waitlistBlack").forEach((ele) => {
       stagger: 0.01,
     }).to(".waitListMenu", {
       x: 0,
-      onComplete: () => {
-        console.log("reach");
-      },
     });
   });
 });
@@ -348,7 +345,6 @@ gsap.to(".eleventhLeft", {
 });
 
 let boxes = document.querySelectorAll(".eleventhBox");
-console.log(boxes);
 boxes.forEach((box, i) => {
   box.classList.add(`box${i}`);
   box.innerHTML += `<p id=para${i}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo maxime soluta vitae labore vel provident nihil laudantium quasi aut inventore assumenda eius saepe sequi laborum atque, ducimus iusto non autem eligendi. Sapiente a unde, molestias quod omnis saepe at magni. </p>`;
@@ -361,7 +357,6 @@ buttons.forEach((button, i) => {
   button.classList.add(`headbutt${i}`);
   const id = `#para${i}`;
   button.addEventListener("click", (event) => {
-    console.log("clicked")
     if (button.className === `headbutt${i}`) {
       gsap.to(`.headbutt${i}`, {
         rotate: 45,
@@ -375,15 +370,10 @@ buttons.forEach((button, i) => {
           y: 35,
         });
       button.className += "use";
-      console.log(button.className);
     } 
     else if (button.className === `headbutt${i}use`) {
-      console.log('hello',button.className)
       gsap.to(`.${button.className}`, {
         rotate:0,
-        onComplete:()=>{
-          console.log("here")
-        }
       });
       tl5
         .to(id, {
